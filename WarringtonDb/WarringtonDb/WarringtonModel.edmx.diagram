@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ec93424f6ba40f4bf08237cce03a191" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="WarringtonModel.tblCityMaster" Width="1.5" PointX="6.4969468538169508" PointY="28.359735695812727" />
+        <EntityTypeShape EntityType="WarringtonModel.tblDocRepository" Width="1.5" PointX="11.549654938070875" PointY="5.3952983642906407" />
+        <EntityTypeShape EntityType="WarringtonModel.tblLoginHistory" Width="1.5" PointX="5.9741232180847428" PointY="10.468754102694222" />
+        <EntityTypeShape EntityType="WarringtonModel.tblRequestStatu" Width="1.5" PointX="5.1790856761760473" PointY="20.943144539810319" />
+        <EntityTypeShape EntityType="WarringtonModel.tblStateMaster" Width="1.5" PointX="11.491691406579545" PointY="21.783732826720797" />
+        <EntityTypeShape EntityType="WarringtonModel.tblUserRequest" Width="1.5" PointX="11.39646772825926" PointY="7.7725947237445947" />
+        <EntityTypeShape EntityType="WarringtonModel.tblUser" Width="1.5" PointX="9.9232717072233889" PointY="25.966676232389489" />
+        <AssociationConnector Association="WarringtonModel.FK_tblDocRepository_tblUserRequest" />
+        <AssociationConnector Association="WarringtonModel.FK_tblRequestStatus_tblUserRequest" />
+        <AssociationConnector Association="WarringtonModel.FK_tblUsers_tblStateMaster" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14785730-5BB7-44B2-82BF-EEC9B4C651AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarringtonDb</RootNamespace>
+    <AssemblyName>WarringtonDb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCityMaster.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDocRepository.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoginHistory.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRequestStatu.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblStateMaster.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserRequest.cs">
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarringtonModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WarringtonModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarringtonModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WarringtonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarringtonModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WarringtonModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="WarringtonModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WarringtonModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WarringtonModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WarringtonModel.edmx</DependentUpon>
+      <LastGenOutput>WarringtonModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="WarringtonModel.edmx.diagram">
+      <DependentUpon>WarringtonModel.edmx</DependentUpon>
+    </None>
+    <None Include="WarringtonModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WarringtonModel.edmx</DependentUpon>
+      <LastGenOutput>WarringtonModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WarringtonConfig\WarringtonConfig\WarringtonEntity.csproj">
+      <Project>{9fbeb3f1-4e5a-4a82-bc6b-9afce97cc1ad}</Project>
+      <Name>WarringtonEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

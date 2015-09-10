@@ -1,0 +1,15 @@
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonBll.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonBll.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonDAL.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonDb.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonHelper.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\EntityFramework.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonDAL.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonDb.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\WarringtonHelper.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\bin\Debug\EntityFramework.xml
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\obj\Debug\WarringtonBll.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\obj\Debug\WarringtonBll.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonBll\WarringtonBll\obj\Debug\WarringtonBll.pdb

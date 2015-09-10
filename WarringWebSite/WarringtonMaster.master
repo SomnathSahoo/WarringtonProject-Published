@@ -1,0 +1,262 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WarringtonMaster.master.cs" Inherits="WarringtonMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link href="font/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="App_Themes/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: ['Open+Sans::latin'] }
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+    <script type="text/javascript" language="javascript">
+        var CheckValidation = function () {
+            var totalControlToValidate = jQuery('.rqrdFld').length;
+            var validationCount = 0;
+            jQuery('.rqrdFld').each(function () {
+                var currentControl = jQuery(this);
+                var validationMessage = currentControl.prev().text() + " is Mandatory.";
+                if (currentControl.is('input') && currentControl.val().trim() == "") {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                        currentControl.parent().next().append("<span class='bubble'>" + validationMessage + "</span>");
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                        currentControl.parent().append("<span class='bubble'>" + validationMessage + "</span>");
+                    }
+                    validationCount++;
+                }
+                else if (currentControl.is('select') && currentControl.prop('selectedIndex') == '0') {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                        currentControl.parent().next().append("<span class='bubble'>" + validationMessage + "</span>");
+                    }
+                    validationCount++;
+                }
+            });
+            jQuery('.email').each(function () {
+                var currentControl = jQuery(this);
+                if (!IsEmail(currentControl.val())) {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                        currentControl.parent().next().append("<span class='bubble'>Invalid email address</span>");
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                        currentControl.parent().append("<span class='bubble'>Invalid email address</span>");
+                    }
+                    validationCount++;
+                }
+                else {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                    }
+                }
+            });
+
+            var passWord = jQuery('.compare1').val();
+            var reTypePassWord = jQuery('.compare2').val();
+            if (passWord != reTypePassWord) {
+                jQuery('.compare2').parent().next().find('.bubble').remove();
+                jQuery('.compare2').parent().next().append("<span class='bubble'>Password Missmatch</span>");
+                validationCount++;
+            }
+            else {
+                jQuery('.compare2').parent().next().find('.bubble').remove();
+            }
+            //if (validationCount == 0) {
+            //    jQuery('.bubble').remove();                
+            //}
+
+            if (validationCount == 0) {
+                return true;
+            }
+            else
+                return false;
+        }
+        var ClearAllValidationMessage = function () {
+            if (confirm("Are you sure to reset all fields") == true) {
+                jQuery('.bubble').remove();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        var IsEmail = function (email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        function isNumber(evt, element) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+
+            if (
+                (charCode != 45 || jQuery(element).val().indexOf('-') != -1) &&      // “-” CHECK MINUS, AND ONLY ONE.
+                (charCode != 46 || jQuery(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
+                (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        var disableBack = function () { window.history.forward() }
+
+        jQuery(document).ready(function () {
+
+
+            window.onload = disableBack();
+            window.onpageshow = function (evt) { if (evt.persisted) disableBack() }
+
+            jQuery('.rqrdFld').blur(function () {
+                var currentControl = jQuery(this);
+                var validationMessage = currentControl.prev().text() + " is Mandatory.";
+                if (currentControl.is('input') && currentControl.val().trim() == "") {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                        currentControl.parent().next().append("<span class='bubble'>" + validationMessage + "</span>");
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                        currentControl.parent().append("<span class='bubble'>" + validationMessage + "</span>");
+                    }
+                }
+                else {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                    }
+                }
+            });
+
+            jQuery('.email').blur(function () {
+                var currentControl = jQuery(this);
+                if (!IsEmail(currentControl.val())) {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                        currentControl.parent().next().append("<span class='bubble'>Invalid email address</span>");
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                        currentControl.parent().append("<span class='bubble'>Invalid email address</span>");
+                    }
+                }
+                else {
+                    if (currentControl.parent().is('div')) {
+                        currentControl.parent().next().find('.bubble').remove();
+                    }
+                    else if (currentControl.parent().is('li')) {
+                        currentControl.parent().find('.bubble').remove();
+                    }
+                }
+            });
+
+            jQuery('.number').keypress(function (event) {
+
+                return isNumber(event, this)
+
+            });
+
+            jQuery('.compare2').blur(function () {
+                var passWord = jQuery('.compare1').val();
+                var reTypePassWord = jQuery('.compare2').val();
+                if (reTypePassWord != '') {
+                    if (passWord != reTypePassWord) {
+                        jQuery('.compare2').parent().next().find('.bubble').remove();
+                        jQuery('.compare2').parent().next().append("<span class='bubble'>Password Missmatch</span>");
+                        validationCount++;
+                    }
+                    else {
+                        jQuery('.compare2').parent().next().find('.bubble').remove();
+                    }
+                }
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <title></title>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+</asp:ScriptManager>
+                <div class="hdrAA">
+                    <div class="page">
+        
+                        <div class="logoBx">
+	                        <i class="fa-pagelines fa"></i> Warrington<strong>Township</strong>
+                        </div>
+
+                        <div class="rightBx">
+	                        <div class="txtL1">
+    	                        Welcome to the Response Line
+                            </div>
+	                        <div class="timeLn">
+    	                        <label runat="server" id="lblToday"></label>
+                            </div>
+                        </div>
+        
+                        <div class="magic"></div>        
+                            <nav>
+                                <div id='cssmenu'>
+                                    <ul>
+                                       <li class='active'><a href="WarringtonHome.aspx"><span>Home</span></a></li>
+                                       <li><a href="Login.aspx"><span>Login</span></a></li>
+                                       <li><a href="RequestSubmission.aspx"><span>Submit Request</span></a></li>
+                                       <li><a href="UserRegistration.aspx"><span>Resident Reg</span></a></li>
+                                       <li><a href="RequestDashboard.aspx"><span>request View</span></a></li>
+                                    </ul>
+                                </div>	
+                            </nav>          
+                    </div>
+                </div>
+    
+                <div class="hdrBB">
+                    <div class="page">
+                            <div class="brdkm">
+	                            <asp:Literal ID="ltrSiteMap" runat="server"></asp:Literal>
+                            </div>
+                            <div class="magic"></div>
+                    </div>
+                </div>
+        </header>
+
+        <div class="frmArea">
+            <div class="page">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <footer>
+            <div class="ftTxt">
+                Copyrighted my design 2015. All rights resserved.
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dsReferrals.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dsReferrals.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dsReferrals.xsd" id="dsReferrals" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dsReferrals">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="get_AllReferralsByReceiverID">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="MsgID" type="xs:long" />
+              <xs:element name="MemberID" type="xs:int" />
+              <xs:element minOccurs="0" name="ToPhoneNumber">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="FromPhonenumber">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="FromAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="ToAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MsgText">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MsgSubject">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MsgTitle">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MsgPriority" type="xs:int" />
+              <xs:element minOccurs="0" name="MsgType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="SenderNetworkID" type="xs:int" />
+              <xs:element minOccurs="0" name="SenderSponsorID" type="xs:int" />
+              <xs:element name="SenderMemberID" type="xs:int" />
+              <xs:element minOccurs="0" name="ReceiverMemberID" type="xs:int" />
+              <xs:element minOccurs="0" name="ReceiverSponsorID" type="xs:int" />
+              <xs:element minOccurs="0" name="ReceiverNetworkID" type="xs:int" />
+              <xs:element minOccurs="0" name="MsgSent" type="xs:boolean" />
+              <xs:element minOccurs="0" name="MsgURL">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MessageRecorded" type="xs:boolean" />
+              <xs:element minOccurs="0" name="MsgCreated" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="MsgReceived" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="LastUpdatedBy" type="xs:int" />
+              <xs:element name="LastUpdated" type="xs:dateTime" />
+              <xs:element name="MsgStatus">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsApproved" type="xs:boolean" />
+              <xs:element name="IsAcknowledged" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:get_AllReferralsByReceiverID" />
+      <xs:field xpath="mstns:MsgID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

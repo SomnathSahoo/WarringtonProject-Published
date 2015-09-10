@@ -1,0 +1,12 @@
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\WarringtonDb.dll.config
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\WarringtonDb.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\WarringtonDb.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\EntityFramework.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\EntityFramework.xml
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\bin\Debug\EntityFramework.SqlServer.xml
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\obj\Debug\WarringtonDb.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\obj\Debug\WarringtonDb.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDb\WarringtonDb\obj\Debug\WarringtonDb.pdb

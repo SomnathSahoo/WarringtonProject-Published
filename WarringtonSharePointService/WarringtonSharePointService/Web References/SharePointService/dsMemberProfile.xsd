@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dsMemberProfile.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dsMemberProfile.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dsMemberProfile.xsd" id="dsMemberProfile" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dsMemberProfile">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MemberProfile">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ProfileID" type="xs:string" />
+              <xs:element name="MemberID" type="xs:int" />
+              <xs:element name="BCSTestCode" type="xs:long" />
+              <xs:element minOccurs="0" name="BpType" type="xs:int" />
+              <xs:element minOccurs="0" name="BsType" type="xs:int" />
+              <xs:element minOccurs="0" name="WtType" type="xs:int" />
+              <xs:element minOccurs="0" name="TpType" type="xs:int" />
+              <xs:element minOccurs="0" name="SystolicMax" type="xs:int" />
+              <xs:element minOccurs="0" name="DiastolicMax" type="xs:int" />
+              <xs:element minOccurs="0" name="SystolicMin" type="xs:int" />
+              <xs:element minOccurs="0" name="DiastolicMin" type="xs:int" />
+              <xs:element minOccurs="0" name="BsMax" type="xs:int" />
+              <xs:element minOccurs="0" name="BsMin" type="xs:int" />
+              <xs:element minOccurs="0" name="TpMax" type="xs:int" />
+              <xs:element minOccurs="0" name="TpMin" type="xs:int" />
+              <xs:element minOccurs="0" name="WtMax" type="xs:double" />
+              <xs:element minOccurs="0" name="WtMin" type="xs:double" />
+              <xs:element minOccurs="0" name="LastUpdated" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="LastUpdatedBy" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:MemberProfile" />
+      <xs:field xpath="mstns:ProfileID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

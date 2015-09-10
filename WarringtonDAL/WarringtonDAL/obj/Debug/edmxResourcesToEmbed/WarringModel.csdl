@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WaringtonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WarringtonModelContext" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="WaringtonModel.sysdiagram" />
+    <EntitySet Name="tblCityMasters" EntityType="WaringtonModel.tblCityMaster" />
+    <EntitySet Name="tblLoginHistories" EntityType="WaringtonModel.tblLoginHistory" />
+    <EntitySet Name="tblRequestStatus" EntityType="WaringtonModel.tblRequestStatu" />
+    <EntitySet Name="tblStateMasters" EntityType="WaringtonModel.tblStateMaster" />
+    <EntitySet Name="tblUserLogins" EntityType="WaringtonModel.tblUserLogin" />
+    <EntitySet Name="tblUserRequests" EntityType="WaringtonModel.tblUserRequest" />
+    <EntitySet Name="tblUsers" EntityType="WaringtonModel.tblUser" />
+    <AssociationSet Name="FK_tblUserRequest_tblCityMaster" Association="WaringtonModel.FK_tblUserRequest_tblCityMaster">
+      <End Role="tblCityMaster" EntitySet="tblCityMasters" />
+      <End Role="tblUserRequest" EntitySet="tblUserRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblCityMaster" Association="WaringtonModel.FK_tblUsers_tblCityMaster">
+      <End Role="tblCityMaster" EntitySet="tblCityMasters" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRequestStatus_tblUserRequest" Association="WaringtonModel.FK_tblRequestStatus_tblUserRequest">
+      <End Role="tblUserRequest" EntitySet="tblUserRequests" />
+      <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRequest_tblStateMaster" Association="WaringtonModel.FK_tblUserRequest_tblStateMaster">
+      <End Role="tblStateMaster" EntitySet="tblStateMasters" />
+      <End Role="tblUserRequest" EntitySet="tblUserRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblStateMaster" Association="WaringtonModel.FK_tblUsers_tblStateMaster">
+      <End Role="tblStateMaster" EntitySet="tblStateMasters" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserLogin_tblUsers" Association="WaringtonModel.FK_tblUserLogin_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblUserLogin" EntitySet="tblUserLogins" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblCityMaster">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CityCode" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="tblUserRequests" Relationship="WaringtonModel.FK_tblUserRequest_tblCityMaster" FromRole="tblCityMaster" ToRole="tblUserRequest" />
+    <NavigationProperty Name="tblUsers" Relationship="WaringtonModel.FK_tblUsers_tblCityMaster" FromRole="tblCityMaster" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblLoginHistory">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="ClientIp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="Activity" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblRequestStatu">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestId" Type="Int64" />
+    <Property Name="Status" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <NavigationProperty Name="tblUserRequest" Relationship="WaringtonModel.FK_tblRequestStatus_tblUserRequest" FromRole="tblRequestStatus" ToRole="tblUserRequest" />
+  </EntityType>
+  <EntityType Name="tblStateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="StateCode" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="tblUserRequests" Relationship="WaringtonModel.FK_tblUserRequest_tblStateMaster" FromRole="tblStateMaster" ToRole="tblUserRequest" />
+    <NavigationProperty Name="tblUsers" Relationship="WaringtonModel.FK_tblUsers_tblStateMaster" FromRole="tblStateMaster" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblUserLogin">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="PinNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="14" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="tblUser" Relationship="WaringtonModel.FK_tblUserLogin_tblUsers" FromRole="tblUserLogin" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblUserRequest">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestNo" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ZipCode" Type="Int64" />
+    <Property Name="CityId" Type="Int64" />
+    <Property Name="StateId" Type="Int64" />
+    <Property Name="PrimaryPhoneNo" Type="String" MaxLength="14" Unicode="true" FixedLength="false" />
+    <Property Name="PrimaryPhoneType" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="PrimaryMobileProvider" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="SecondaryPhoneNo" Type="String" MaxLength="14" Unicode="true" FixedLength="false" />
+    <Property Name="SecondaryPhoneType" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="SecondaryMobileProvider" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="EmailId" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="PrefContactMethod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="ProblemLocation" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="ShortDescription" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="LongDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="AttachedDocName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="EmailConfirmation" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="tblCityMaster" Relationship="WaringtonModel.FK_tblUserRequest_tblCityMaster" FromRole="tblUserRequest" ToRole="tblCityMaster" />
+    <NavigationProperty Name="tblRequestStatus" Relationship="WaringtonModel.FK_tblRequestStatus_tblUserRequest" FromRole="tblUserRequest" ToRole="tblRequestStatus" />
+    <NavigationProperty Name="tblStateMaster" Relationship="WaringtonModel.FK_tblUserRequest_tblStateMaster" FromRole="tblUserRequest" ToRole="tblStateMaster" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailId" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ZipCode" Type="Int64" />
+    <Property Name="CityId" Type="Int64" />
+    <Property Name="StateId" Type="Int64" />
+    <Property Name="PrimaryPhoneNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PrimaryPhoneType" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PrimaryMobileProvider" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="SecondaryPhoneNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecondaryPhoneType" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="SecondaryMobileProvider" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="tblCityMaster" Relationship="WaringtonModel.FK_tblUsers_tblCityMaster" FromRole="tblUsers" ToRole="tblCityMaster" />
+    <NavigationProperty Name="tblStateMaster" Relationship="WaringtonModel.FK_tblUsers_tblStateMaster" FromRole="tblUsers" ToRole="tblStateMaster" />
+    <NavigationProperty Name="tblUserLogins" Relationship="WaringtonModel.FK_tblUserLogin_tblUsers" FromRole="tblUsers" ToRole="tblUserLogin" />
+  </EntityType>
+  <Association Name="FK_tblUserRequest_tblCityMaster">
+    <End Role="tblCityMaster" Type="WaringtonModel.tblCityMaster" Multiplicity="0..1" />
+    <End Role="tblUserRequest" Type="WaringtonModel.tblUserRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCityMaster">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="tblUserRequest">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblCityMaster">
+    <End Role="tblCityMaster" Type="WaringtonModel.tblCityMaster" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="WaringtonModel.tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCityMaster">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRequestStatus_tblUserRequest">
+    <End Role="tblUserRequest" Type="WaringtonModel.tblUserRequest" Multiplicity="0..1" />
+    <End Role="tblRequestStatus" Type="WaringtonModel.tblRequestStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserRequest">
+        <PropertyRef Name="RequestId" />
+      </Principal>
+      <Dependent Role="tblRequestStatus">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRequest_tblStateMaster">
+    <End Role="tblStateMaster" Type="WaringtonModel.tblStateMaster" Multiplicity="0..1" />
+    <End Role="tblUserRequest" Type="WaringtonModel.tblUserRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStateMaster">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblUserRequest">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblStateMaster">
+    <End Role="tblStateMaster" Type="WaringtonModel.tblStateMaster" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="WaringtonModel.tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStateMaster">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserLogin_tblUsers">
+    <End Role="tblUsers" Type="WaringtonModel.tblUser" Multiplicity="0..1" />
+    <End Role="tblUserLogin" Type="WaringtonModel.tblUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

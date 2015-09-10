@@ -1,0 +1,5 @@
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.pdb

@@ -1,0 +1,14 @@
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonDAL.dll.config
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonDAL.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonDAL.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\EntityFramework.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonDb.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\WarringtonDb.pdb
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\EntityFramework.xml
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\obj\Debug\WarringtonDAL.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\obj\Debug\WarringtonDAL.dll
+D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonDAL\WarringtonDAL\obj\Debug\WarringtonDAL.pdb

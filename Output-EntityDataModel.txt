@@ -1,0 +1,3 @@
+﻿Generated model file: WarringtonModel.edmx.
+Loading metadata from the database took 00:00:04.0732417.
+Generating the model took 00:00:09.8046651.

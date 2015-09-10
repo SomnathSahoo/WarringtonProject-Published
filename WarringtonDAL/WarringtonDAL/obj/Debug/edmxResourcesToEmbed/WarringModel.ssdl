@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WaringtonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WaringtonModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="WaringtonModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblCityMaster" EntityType="WaringtonModel.Store.tblCityMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblLoginHistory" EntityType="WaringtonModel.Store.tblLoginHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblRequestStatus" EntityType="WaringtonModel.Store.tblRequestStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblStateMaster" EntityType="WaringtonModel.Store.tblStateMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUserLogin" EntityType="WaringtonModel.Store.tblUserLogin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUserRequest" EntityType="WaringtonModel.Store.tblUserRequest" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUsers" EntityType="WaringtonModel.Store.tblUsers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_tblRequestStatus_tblUserRequest" Association="WaringtonModel.Store.FK_tblRequestStatus_tblUserRequest">
+      <End Role="tblUserRequest" EntitySet="tblUserRequest" />
+      <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserLogin_tblUsers" Association="WaringtonModel.Store.FK_tblUserLogin_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblUserLogin" EntitySet="tblUserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRequest_tblCityMaster" Association="WaringtonModel.Store.FK_tblUserRequest_tblCityMaster">
+      <End Role="tblCityMaster" EntitySet="tblCityMaster" />
+      <End Role="tblUserRequest" EntitySet="tblUserRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRequest_tblStateMaster" Association="WaringtonModel.Store.FK_tblUserRequest_tblStateMaster">
+      <End Role="tblStateMaster" EntitySet="tblStateMaster" />
+      <End Role="tblUserRequest" EntitySet="tblUserRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblCityMaster" Association="WaringtonModel.Store.FK_tblUsers_tblCityMaster">
+      <End Role="tblCityMaster" EntitySet="tblCityMaster" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblStateMaster" Association="WaringtonModel.Store.FK_tblUsers_tblStateMaster">
+      <End Role="tblStateMaster" EntitySet="tblStateMaster" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblCityMaster">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="varchar" MaxLength="100" />
+    <Property Name="CityCode" Type="char" MaxLength="10" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblLoginHistory">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="ClientIp" Type="varchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="Activity" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tblRequestStatus">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RequestId" Type="bigint" />
+    <Property Name="Status" Type="char" MaxLength="4" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblStateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="varchar" MaxLength="100" />
+    <Property Name="StateCode" Type="char" MaxLength="10" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblUserLogin">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="PinNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="14" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblUserRequest">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RequestNo" Type="nvarchar" MaxLength="10" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" />
+    <Property Name="Address1" Type="varchar(max)" />
+    <Property Name="Address2" Type="varchar(max)" />
+    <Property Name="ZipCode" Type="bigint" />
+    <Property Name="CityId" Type="bigint" />
+    <Property Name="StateId" Type="bigint" />
+    <Property Name="PrimaryPhoneNo" Type="nvarchar" MaxLength="14" />
+    <Property Name="PrimaryPhoneType" Type="nvarchar" MaxLength="100" />
+    <Property Name="PrimaryMobileProvider" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecondaryPhoneNo" Type="nvarchar" MaxLength="14" />
+    <Property Name="SecondaryPhoneType" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecondaryMobileProvider" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+    <Property Name="PrefContactMethod" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProblemLocation" Type="nvarchar" MaxLength="500" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="LongDescription" Type="varchar(max)" />
+    <Property Name="AttachedDocName" Type="varchar" MaxLength="500" />
+    <Property Name="EmailConfirmation" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Status" Type="char" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmailId" Type="varchar" MaxLength="500" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" />
+    <Property Name="Address1" Type="varchar(max)" />
+    <Property Name="Address2" Type="varchar(max)" />
+    <Property Name="ZipCode" Type="bigint" />
+    <Property Name="CityId" Type="bigint" />
+    <Property Name="StateId" Type="bigint" />
+    <Property Name="PrimaryPhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="PrimaryPhoneType" Type="varchar" MaxLength="100" />
+    <Property Name="PrimaryMobileProvider" Type="varchar" MaxLength="100" />
+    <Property Name="SecondaryPhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="SecondaryPhoneType" Type="varchar" MaxLength="100" />
+    <Property Name="SecondaryMobileProvider" Type="varchar" MaxLength="100" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <Association Name="FK_tblRequestStatus_tblUserRequest">
+    <End Role="tblUserRequest" Type="WaringtonModel.Store.tblUserRequest" Multiplicity="0..1" />
+    <End Role="tblRequestStatus" Type="WaringtonModel.Store.tblRequestStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserRequest">
+        <PropertyRef Name="RequestId" />
+      </Principal>
+      <Dependent Role="tblRequestStatus">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserLogin_tblUsers">
+    <End Role="tblUsers" Type="WaringtonModel.Store.tblUsers" Multiplicity="0..1" />
+    <End Role="tblUserLogin" Type="WaringtonModel.Store.tblUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRequest_tblCityMaster">
+    <End Role="tblCityMaster" Type="WaringtonModel.Store.tblCityMaster" Multiplicity="0..1" />
+    <End Role="tblUserRequest" Type="WaringtonModel.Store.tblUserRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCityMaster">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="tblUserRequest">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRequest_tblStateMaster">
+    <End Role="tblStateMaster" Type="WaringtonModel.Store.tblStateMaster" Multiplicity="0..1" />
+    <End Role="tblUserRequest" Type="WaringtonModel.Store.tblUserRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStateMaster">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblUserRequest">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblCityMaster">
+    <End Role="tblCityMaster" Type="WaringtonModel.Store.tblCityMaster" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="WaringtonModel.Store.tblUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCityMaster">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblStateMaster">
+    <End Role="tblStateMaster" Type="WaringtonModel.Store.tblStateMaster" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="WaringtonModel.Store.tblUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStateMaster">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

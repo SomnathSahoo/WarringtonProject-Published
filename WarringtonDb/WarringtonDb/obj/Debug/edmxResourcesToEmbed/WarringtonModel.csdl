@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WarringtonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TheThinkerz_WTPSharePointEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="WarringtonModel.sysdiagram" />
+    <EntitySet Name="tblCityMasters" EntityType="WarringtonModel.tblCityMaster" />
+    <EntitySet Name="tblDocRepositories" EntityType="WarringtonModel.tblDocRepository" />
+    <EntitySet Name="tblLoginHistories" EntityType="WarringtonModel.tblLoginHistory" />
+    <EntitySet Name="tblRequestStatus" EntityType="WarringtonModel.tblRequestStatu" />
+    <EntitySet Name="tblStateMasters" EntityType="WarringtonModel.tblStateMaster" />
+    <EntitySet Name="tblUserRequests" EntityType="WarringtonModel.tblUserRequest" />
+    <EntitySet Name="tblUsers" EntityType="WarringtonModel.tblUser" />
+    <AssociationSet Name="FK_tblDocRepository_tblUserRequest" Association="WarringtonModel.FK_tblDocRepository_tblUserRequest">
+      <End Role="tblUserRequest" EntitySet="tblUserRequests" />
+      <End Role="tblDocRepository" EntitySet="tblDocRepositories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRequestStatus_tblUserRequest" Association="WarringtonModel.FK_tblRequestStatus_tblUserRequest">
+      <End Role="tblUserRequest" EntitySet="tblUserRequests" />
+      <End Role="tblRequestStatu" EntitySet="tblRequestStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblStateMaster" Association="WarringtonModel.FK_tblUsers_tblStateMaster">
+      <End Role="tblStateMaster" EntitySet="tblStateMasters" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblCityMaster">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Type="Int64" Name="CityId" Nullable="false" />
+    <Property Type="String" Name="CityName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CityCode" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="Active" />
+  </EntityType>
+  <EntityType Name="tblDocRepository">
+    <Key>
+      <PropertyRef Name="RecId" />
+    </Key>
+    <Property Type="Int64" Name="RecId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="RequestId" />
+    <Property Type="String" Name="FileName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FilePath" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UploadDate" Precision="3" />
+    <NavigationProperty Name="tblUserRequest" Relationship="WarringtonModel.FK_tblDocRepository_tblUserRequest" FromRole="tblDocRepository" ToRole="tblUserRequest" />
+  </EntityType>
+  <EntityType Name="tblLoginHistory">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Type="Int64" Name="RecordId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="UserId" />
+    <Property Type="String" Name="ClientIp" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="EntryDate" Precision="3" />
+    <Property Type="String" Name="Activity" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblRequestStatu">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Type="Int64" Name="RecordId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="RequestId" />
+    <Property Type="String" Name="Status" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateDate" Precision="3" />
+    <Property Type="Int32" Name="UpdateBy" />
+    <NavigationProperty Name="tblUserRequest" Relationship="WarringtonModel.FK_tblRequestStatus_tblUserRequest" FromRole="tblRequestStatu" ToRole="tblUserRequest" />
+  </EntityType>
+  <EntityType Name="tblStateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Type="Int32" Name="StateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="StateName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StateCode" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="Active" />
+    <NavigationProperty Name="tblUsers" Relationship="WarringtonModel.FK_tblUsers_tblStateMaster" FromRole="tblStateMaster" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblUserRequest">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Type="Int64" Name="RequestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RequestNo" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Address1" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Address2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="ZipCode" />
+    <Property Type="String" Name="CityName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="StateId" />
+    <Property Type="String" Name="PrimaryPhoneNo" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrimaryPhoneType" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrimaryMobileProvider" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SecondaryPhoneNo" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SecondaryPhoneType" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SecondaryMobileProvider" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailId" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrefContactMethod" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProblemLocation" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShortDescription" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LongDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AttachedDocName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="EmailConfirmation" />
+    <Property Type="DateTime" Name="CreateDate" Precision="3" />
+    <Property Type="DateTime" Name="UpdateDate" Precision="3" />
+    <Property Type="String" Name="Status" MaxLength="4" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tblDocRepositories" Relationship="WarringtonModel.FK_tblDocRepository_tblUserRequest" FromRole="tblUserRequest" ToRole="tblDocRepository" />
+    <NavigationProperty Name="tblRequestStatus" Relationship="WarringtonModel.FK_tblRequestStatus_tblUserRequest" FromRole="tblUserRequest" ToRole="tblRequestStatu" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Type="Int64" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="EmailId" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FirstName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Address1" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Address2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ZipCode" />
+    <Property Type="String" Name="CityName" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="StateId" />
+    <Property Type="String" Name="PrimaryPhoneNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PrimaryPhoneType" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PrimaryMobileProvider" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SecondaryPhoneNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SecondaryPhoneType" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SecondaryMobileProvider" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PrefferedContactMethod" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateDate" Precision="3" />
+    <Property Type="DateTime" Name="UpdateDate" Precision="3" />
+    <Property Type="String" Name="PinNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Active" />
+    <NavigationProperty Name="tblStateMaster" Relationship="WarringtonModel.FK_tblUsers_tblStateMaster" FromRole="tblUser" ToRole="tblStateMaster" />
+  </EntityType>
+  <Association Name="FK_tblDocRepository_tblUserRequest">
+    <End Type="WarringtonModel.tblUserRequest" Role="tblUserRequest" Multiplicity="0..1" />
+    <End Type="WarringtonModel.tblDocRepository" Role="tblDocRepository" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserRequest">
+        <PropertyRef Name="RequestId" />
+      </Principal>
+      <Dependent Role="tblDocRepository">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRequestStatus_tblUserRequest">
+    <End Type="WarringtonModel.tblUserRequest" Role="tblUserRequest" Multiplicity="0..1" />
+    <End Type="WarringtonModel.tblRequestStatu" Role="tblRequestStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserRequest">
+        <PropertyRef Name="RequestId" />
+      </Principal>
+      <Dependent Role="tblRequestStatu">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblStateMaster">
+    <End Type="WarringtonModel.tblStateMaster" Role="tblStateMaster" Multiplicity="0..1" />
+    <End Type="WarringtonModel.tblUser" Role="tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStateMaster">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonBll", "WarringtonBll\WarringtonBll\WarringtonBll.csproj", "{6B467B66-C1F5-4D04-93F1-79C6659E5988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonDAL", "WarringtonDAL\WarringtonDAL\WarringtonDAL.csproj", "{B38C3B55-1DAA-4047-B7FF-A76742F839E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonEntity", "WarringtonConfig\WarringtonConfig\WarringtonEntity.csproj", "{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WarringWebSite", "http://localhost:13785", "{A690D214-B595-4FF3-8599-CABB8D111609}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{6b467b66-c1f5-4d04-93f1-79c6659e5988}|WarringtonBll.dll;{14785730-5bb7-44b2-82bf-eec9b4c651ad}|WarringtonDb.dll;{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}|WarringtonConfig.dll;{B38C3B55-1DAA-4047-B7FF-A76742F839E5}|WarringtonDAL.dll;{e5c1ee77-6d36-4511-9be3-1b6b50f9c5c5}|WarringtonSharePointService.dll;{1ca7698f-b007-4289-922c-71ddf2f8a4d2}|WarringtonHelper.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_13785"
+		Debug.AspNetCompiler.PhysicalPath = "WarringWebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_13785\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_13785"
+		Release.AspNetCompiler.PhysicalPath = "WarringWebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_13785\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "WarringWebSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonHelper", "WarringtonHelper\WarringtonHelper\WarringtonHelper.csproj", "{1CA7698F-B007-4289-922C-71DDF2F8A4D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonDb", "WarringtonDb\WarringtonDb\WarringtonDb.csproj", "{14785730-5BB7-44B2-82BF-EEC9B4C651AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarringtonSharePointService", "WarringtonSharePointService\WarringtonSharePointService\WarringtonSharePointService.csproj", "{E5C1EE77-6D36-4511-9BE3-1B6B50F9C5C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B467B66-C1F5-4D04-93F1-79C6659E5988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B467B66-C1F5-4D04-93F1-79C6659E5988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B467B66-C1F5-4D04-93F1-79C6659E5988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B467B66-C1F5-4D04-93F1-79C6659E5988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B38C3B55-1DAA-4047-B7FF-A76742F839E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B38C3B55-1DAA-4047-B7FF-A76742F839E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B38C3B55-1DAA-4047-B7FF-A76742F839E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B38C3B55-1DAA-4047-B7FF-A76742F839E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBEB3F1-4E5A-4A82-BC6B-9AFCE97CC1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A690D214-B595-4FF3-8599-CABB8D111609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A690D214-B595-4FF3-8599-CABB8D111609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A690D214-B595-4FF3-8599-CABB8D111609}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A690D214-B595-4FF3-8599-CABB8D111609}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1CA7698F-B007-4289-922C-71DDF2F8A4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CA7698F-B007-4289-922C-71DDF2F8A4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CA7698F-B007-4289-922C-71DDF2F8A4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CA7698F-B007-4289-922C-71DDF2F8A4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14785730-5BB7-44B2-82BF-EEC9B4C651AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14785730-5BB7-44B2-82BF-EEC9B4C651AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14785730-5BB7-44B2-82BF-EEC9B4C651AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14785730-5BB7-44B2-82BF-EEC9B4C651AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C1EE77-6D36-4511-9BE3-1B6B50F9C5C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C1EE77-6D36-4511-9BE3-1B6B50F9C5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C1EE77-6D36-4511-9BE3-1B6B50F9C5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C1EE77-6D36-4511-9BE3-1B6B50F9C5C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

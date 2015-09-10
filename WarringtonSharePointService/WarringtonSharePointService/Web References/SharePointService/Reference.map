@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptCallLogCounts" filename="dsRptCallLogCounts.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptCountByDayHr" filename="dsRptCountByDayHr.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsReferrals" filename="dsReferrals.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptMemberCalls" filename="dsRptMemberCalls.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://www.saypatti.com/CTechWS/Service.asmx?wsdl" filename="Service.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://www.saypatti.com/CTechWS/Service.asmx?disco" filename="Service.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptPhoneNumberCalls" filename="dsRptPhoneNumberCalls.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsMemberProfile" filename="dsMemberProfile.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptScheduledCalls" filename="dsRptScheduledCalls.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.saypatti.com/CTechWS/Service.asmx?schema=dsRptCallCountByDate" filename="dsRptCallCountByDate.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>
