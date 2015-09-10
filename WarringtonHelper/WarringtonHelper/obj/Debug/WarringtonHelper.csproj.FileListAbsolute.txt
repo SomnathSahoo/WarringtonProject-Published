@@ -5,3 +5,10 @@ D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonHelper\Warring
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.csprojResolveAssemblyReference.cache
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.dll
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\bin\Debug\WarringtonHelper.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\bin\Debug\WarringtonHelper.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonHelper\WarringtonHelper\obj\Debug\WarringtonHelper.pdb

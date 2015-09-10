@@ -2,3 +2,8 @@ D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\Warring
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\bin\Debug\WarringtonConfig.pdb
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.dll
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonConfig\WarringtonConfig\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonConfig\WarringtonConfig\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonEntity.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonConfig\WarringtonConfig\obj\Debug\WarringtonConfig.pdb

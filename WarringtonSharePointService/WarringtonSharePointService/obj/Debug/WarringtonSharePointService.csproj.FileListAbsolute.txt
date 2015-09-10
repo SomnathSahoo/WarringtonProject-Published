@@ -6,3 +6,11 @@ D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonSharePointServ
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.csprojResolveAssemblyReference.cache
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.dll
 D:\Visual Studio\FreeLance\WarringtonWeb\WarringProject\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\bin\Debug\WarringtonSharePointService.dll.config
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\bin\Debug\WarringtonSharePointService.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\bin\Debug\WarringtonSharePointService.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\bin\Debug\WarringtonConfig.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\bin\Debug\WarringtonConfig.pdb
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.csprojResolveAssemblyReference.cache
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.dll
+D:\Visual Studio\FreeLance\Git Hub\MyRepository\WarringtonSharePointService\WarringtonSharePointService\obj\Debug\WarringtonSharePointService.pdb

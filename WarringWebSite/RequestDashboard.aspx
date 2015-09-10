@@ -63,55 +63,53 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Request No">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_No") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblRequestNo" runat="server" Text='<%#Eval("Request_No") %>'></asp:label>
+                                                <asp:HiddenField ID="Label1" runat="server" Value='<%#Eval("Request_ID") %>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Request Creation Date">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Date") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblRequestDate" Text='<%#Eval("Request_Date") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Request Change Date">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_ChangeDate") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblRequestChangeDate" Text='<%#Eval("Request_ChangeDate") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Status">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Status") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblStatus" Text='<%#Eval("Request_Status") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Address of Prob">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Address") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblProbAddress" Text='<%#Eval("Request_Address") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Short Desc">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_ShortDesc") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblShortDesc" Text='<%#Eval("Request_ShortDesc") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Long Desc">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_LongDesc") %>' runat="server"></asp:label>
+                                                <asp:label ID="lblLongDesc" Text='<%#Eval("Request_LongDesc") %>' runat="server"></asp:label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Request No">
+                                        <asp:TemplateField HeaderText="Update Request">
                                             <ItemTemplate>
-                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_No") %>' runat="server"></asp:label>
+                                                <asp:Button ID="btnUpdate" Text="Update" CssClass="editlnk" runat="server"></asp:Button>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField HeaderText="Request Change Date" DataField="Request_ChangeDate" />
-                                        <asp:BoundField HeaderText="Status" DataField="Request_Status" />
-                                        <asp:BoundField HeaderText="Address of Prob" DataField="Request_Address" />
-                                        <asp:BoundField HeaderText="Short Desc" DataField="Request_ShortDesc" />
                                     </Columns>
                                 </asp:GridView>
                         </div> 
                 </div>
             </div>
     </section>
-    <section>
+    <div id="editDiv" runat="server" visible="false">
+        <section>
 	        <div class="hdrBar bgClr" >
     	        <i class="fa fa-pencil"></i> Create a New Request
             </div>
@@ -123,19 +121,19 @@
 
 	                            <li>
                                     <label class="flbl">Address/Location of the Problem :</label>
-                                    <textarea class="inFldITT inptF"></textarea>
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="inFldITT inptF" TextMode="MultiLine"></asp:TextBox>
                                     <div class="magic"></div>
                                 </li>
     
                                 <li>
                                     <label class="flbl">Enter a Short Description of the Request :</label>
-                                    <input class="inFldITT inptG" type="text" />
+                                    <asp:TextBox ID="txtShortDesc" runat="server" CssClass="inFldITT inptG"></asp:TextBox>
                                     <div class="magic"></div>
                                 </li>
     
                                 <li>
                                     <label class="flbl">Enter all details about the issue you feel are important :</label>
-                                    <textarea class="inFldITT inptH"></textarea>
+                                    <asp:TextBox ID="txtLongDesc" runat="server" CssClass="inFldITT inptH" TextMode="MultiLine"></asp:TextBox>
                                     <div class="magic"></div>
                                 </li>
    
@@ -143,79 +141,9 @@
     	                            <div class="uplodArea">
         	                            <label class="flbl">Upload a Document :</label>
                                             <a class="hlpBtn" href="#">Help!</a>            	
-    		                                <input type="file" class="fileTypeI">        
+    		                                <asp:FileUpload ID="fuploadDocs" runat="server" AllowMultiple="true" CssClass="fileTypeI" />        
 	
                                             <div class="fileShowLst">
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-word-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.doc
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-code-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.html
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-excel-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.xlsx
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-archive-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.zip
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-image-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.jpg
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-picture-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.png
-                                                            </div>	
-                                                        </div>
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-pdf-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.pdf
-                                                            </div>	
-                                                        </div>
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-text-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.txt
-                                                            </div>	
-                                                        </div>
-                                                        <div class="fileOne">
-                                                            <div class="dltIt"><i class="fa fa-trash-o"></i></div>
-                                                            <div class="fileIcn"> <i class="fa fa-file-sound-o"></i></div>
-                                                            <div class="fileNme">
-                                                                fileName.mp3
-                                                            </div>	
-                                                        </div>
-    
-                                                        <div class="magic"></div>
                                             </div>  
                                     </div>
                                     <div class="magic"></div>
@@ -231,7 +159,7 @@
     
                                <li>
                                     <div class="btnBoxA">
-   		                            <button class="inptBtn bbtnA bgClr">Send Request</button>
+   		                            <asp:Button ID="btnSendRequest" runat="server" Text="Send Request" CssClass="inptBtn bbtnA bgClr" />
                                     <div class="magic"></div>
                                </div>
                                </li>
@@ -242,5 +170,6 @@
                 </div>
 	        </div>
     </section>
+    </div>
 </asp:Content>
 
