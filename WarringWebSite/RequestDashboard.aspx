@@ -61,15 +61,50 @@
 
                                 <asp:GridView ID="grdRequests" runat="server" CssClass="hdingIt" AutoGenerateColumns="false">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Request No" DataField="Request_No" />
-                                        <asp:BoundField HeaderText="Request Creation Date" DataField="Request_Date" />
+                                        <asp:TemplateField HeaderText="Request No">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_No") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Request Creation Date">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Date") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Request Change Date">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_ChangeDate") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Status">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Status") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Address of Prob">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_Address") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Short Desc">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_ShortDesc") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Long Desc">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_LongDesc") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Request No">
+                                            <ItemTemplate>
+                                                <asp:label ID="lblRequestNo" Text='<%#Eval("Request_No") %>' runat="server"></asp:label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField HeaderText="Request Change Date" DataField="Request_ChangeDate" />
                                         <asp:BoundField HeaderText="Status" DataField="Request_Status" />
                                         <asp:BoundField HeaderText="Address of Prob" DataField="Request_Address" />
                                         <asp:BoundField HeaderText="Short Desc" DataField="Request_ShortDesc" />
-                                        <asp:BoundField HeaderText="Long Desc" DataField="Request_No" />
-                                        <asp:BoundField HeaderText="Supporting Doc" DataField="Request_No" />
-                                        <asp:BoundField HeaderText="Update Request" DataField="Request_No" />
                                     </Columns>
                                 </asp:GridView>
                         </div> 
