@@ -97,10 +97,11 @@ namespace WarringtonEntity
 
     public class SearchParam
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string RequestNo { get; set; }
         public string RequestStatus { get; set; }
         public DateTime RequestDate { get; set; }
         public string CompareOperator { get; set; }
+        public int NoOfData { get; set; }
     }
 }

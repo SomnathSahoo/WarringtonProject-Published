@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WarringtonDb;
 using WarringtonEntity;
 using System.Data.Linq;
+using System.Data.Objects;
 
 namespace WarringtonDAL
 {
@@ -323,24 +324,26 @@ namespace WarringtonDAL
                     var result = context.tblUserRequests.Where(r => string.IsNullOrEmpty(objParam.RequestNo) ? (objParam.RequestNo.Equals(string.Empty)) : (r.RequestNo.Equals(objParam.RequestNo))
                         && (r.PrimaryPhoneNo.Equals(objParam.UserId))
                         && (string.IsNullOrEmpty(objParam.RequestStatus) ? (objParam.RequestStatus.Equals(string.Empty)) : (r.Status.Equals(objParam.RequestStatus)))
-                        );
+                        ).ToList<tblUserRequest>();
                     switch (objParam.CompareOperator)
                     {
                         case "=":
                             result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
                                 (objParam.RequestDate.Equals(DateTime.MinValue)) :
-                                (p.CreateDate.Equals(objParam.RequestDate))));
+                                (DateTime.Compare(p.CreateDate.Value.Date, objParam.RequestDate.Date) == 0))).ToList<tblUserRequest>();
                             break;
                         case ">":
-                            result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
-                                (objParam.RequestDate.Equals(DateTime.MinValue)) : (p.CreateDate > objParam.RequestDate)));
+                            result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ? (objParam.RequestDate.Equals(DateTime.MinValue)) :
+                                (DateTime.Compare(p.CreateDate.Value.Date, objParam.RequestDate.Date) > 0))).ToList<tblUserRequest>();
                             break;
                         case "<":
                             result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
-                                (objParam.RequestDate.Equals(DateTime.MinValue)) : (p.CreateDate < objParam.RequestDate)));
+                                (objParam.RequestDate.Equals(DateTime.MinValue)) :
+                                (DateTime.Compare(p.CreateDate.Value.Date, objParam.RequestDate.Date) < 0))).ToList<tblUserRequest>();
                             break;
                     }
-                    foreach(tblUserRequest objRequest in result)
+                    result = result.Take(objParam.NoOfData).ToList<tblUserRequest>();
+                    foreach (tblUserRequest objRequest in result)
                     {
                         lstRequests.Add(new UserRequest()
                         {
@@ -362,6 +365,28 @@ namespace WarringtonDAL
                 }
             }
             return lstRequests;
+        }
+
+        public string GetUploadedFiles(int requestId)
+        {
+            string strFileList = string.Empty;
+            using (var context = new TheThinkerz_WTPSharePointEntities())
+            {
+                try
+                {
+                    var lstDocs = context.tblDocRepositories.Where(r => r.RequestId==requestId).ToList<tblDocRepository>();
+                    foreach (var item in lstDocs)
+                    {
+                        strFileList += string.IsNullOrEmpty(strFileList) ? item.FileName : "," + item.FileName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+
+                }
+            }
+            return strFileList;
         }
     }
 }

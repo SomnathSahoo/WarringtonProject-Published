@@ -119,9 +119,10 @@ namespace WarringtonBll
             return objDal.IsUserRegistered(phoneNo);
         }
 
-        public bool UserIsAuthenticated(string userName, string password, out long userId)
+        public bool UserIsAuthenticated(string userName, string password, out string phoneNo)
         {
-            userId = 0;
+            phoneNo = string.Empty;
+            long userId = 0;
             bool isSaved = false;
             try
             {
@@ -137,7 +138,7 @@ namespace WarringtonBll
                         Activity = "User logged in",
                         EntryDate = DateTime.UtcNow
                     });
-
+                    phoneNo = userName;
                     return objDal.SaveLoginHistory(lstLoginHistory) > 0;
                 }
             }
@@ -174,6 +175,24 @@ namespace WarringtonBll
                 objDal = null;
             }
             return null;
+        }
+
+        public string GetUploadedFiles(int requestId)
+        {
+            try
+            {
+                objDal = new WarringtonDal();
+                return objDal.GetUploadedFiles(requestId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDal = null;
+            }
+            return string.Empty;
         }
     }
 }

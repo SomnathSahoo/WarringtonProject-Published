@@ -33,9 +33,9 @@ public partial class Login : System.Web.UI.Page
 
     private void btnLogin_Click(object sender, EventArgs e)
     {
-        long userId = 0;
+        string userId = string.Empty;
         objBll = new WarringtonBll.WarringtonBll();
-        if (objBll.UserIsAuthenticated(txtUserId.Text.Trim(), txtPassword.Text.Trim(),out userId))
+        if (objBll.UserIsAuthenticated(txtUserId.Text.Trim(), txtPassword.Text.Trim(), out userId))
         {
             Utility.SetSessionValue(Constants._USERISLOGGEDIN, true);
             Utility.SetSessionValue(Constants._LOGINUSERID, userId);

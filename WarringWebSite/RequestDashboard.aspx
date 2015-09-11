@@ -1,6 +1,40 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WarringtonMaster.master" AutoEventWireup="true" CodeFile="RequestDashboard.aspx.cs" Inherits="RequestDashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script type="text/javascript" language="javascript">
+        jQuery(document).ready(function () {
+            var htmlScript1 = '';
+            var files = jQuery('input[id$=hdnFileList]').val().toString().split(',');
+            for (var i = 0; i < files.length; i++) {
+                if (files[i].toString().trim() != '') {
+                    htmlScript1 += "<div class=\"fileOne\">" +
+                                            "<div class=\"dltIt\"><i class=\"fa fa-trash-o\"></i></div>" +
+                                            "<div class=\"fileIcn\"> <i class=\"fa fa-file-word-o\"></i></div>" +
+                                           " <div class=\"fileNme\">" + files[i].toString() + " </div>	" + "</div>";
+                }
+
+            }
+            htmlScript1 += "<div class=\"magic\"></div>";
+            jQuery('.fileShowLst').html(htmlScript1);
+
+
+            jQuery('input[type=file]').change(function () {
+                var htmlScript = '';
+                var files = jQuery('input[type=file]')[0].files;
+                for (var i = 0; i < files.length; i++) {
+                    if (files[i].name.toString().trim() != '') {
+                        htmlScript += "<div class=\"fileOne\">" +
+                                                "<div class=\"dltIt\"><i class=\"fa fa-trash-o\"></i></div>" +
+                                                "<div class=\"fileIcn\"> <i class=\"fa fa-file-word-o\"></i></div>" +
+                                               " <div class=\"fileNme\">" + files[i].name + " </div>	" + "</div>";
+                    }
+                }
+                htmlScript += "<div class=\"magic\"></div>";
+                jQuery('.fileShowLst').html(htmlScript);
+            });
+        });
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section>
@@ -59,12 +93,12 @@
                                     <div class="magic"></div>
                                 </div>
 
-                                <asp:GridView ID="grdRequests" runat="server" CssClass="hdingIt" AutoGenerateColumns="false">
+                                <asp:GridView ID="grdRequests" runat="server" CssClass="hdingIt" AutoGenerateColumns="false" AllowPaging="True">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Request No">
                                             <ItemTemplate>
                                                 <asp:label ID="lblRequestNo" runat="server" Text='<%#Eval("Request_No") %>'></asp:label>
-                                                <asp:HiddenField ID="Label1" runat="server" Value='<%#Eval("Request_ID") %>' />
+                                                <asp:HiddenField ID="hdnRequestId" runat="server" Value='<%#Eval("Request_ID") %>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Request Creation Date">
@@ -99,7 +133,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Update Request">
                                             <ItemTemplate>
-                                                <asp:Button ID="btnUpdate" Text="Update" CssClass="editlnk" runat="server"></asp:Button>
+                                                <asp:Button ID="btnUpdate" Text="Update" CssClass="editlnk" OnClick="btnUpdate_Click" runat="server"></asp:Button>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -120,6 +154,8 @@
                             <ul class="forbrdrIt">
 
 	                            <li>
+                                    <asp:HiddenField ID="hdnReqId" runat="server" Value="0" />
+                                    <asp:HiddenField ID="hdnFileList" runat="server" Value="0" />
                                     <label class="flbl">Address/Location of the Problem :</label>
                                     <asp:TextBox ID="txtAddress" runat="server" CssClass="inFldITT inptF" TextMode="MultiLine"></asp:TextBox>
                                     <div class="magic"></div>
