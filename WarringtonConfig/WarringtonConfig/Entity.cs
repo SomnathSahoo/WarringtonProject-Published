@@ -94,4 +94,13 @@ namespace WarringtonEntity
         public string StateCode { get; set; }
         public Nullable<bool> Active { get; set; }
     }
+
+    public class SearchParam
+    {
+        public int UserId { get; set; }
+        public string RequestNo { get; set; }
+        public string RequestStatus { get; set; }
+        public DateTime RequestDate { get; set; }
+        public string CompareOperator { get; set; }
+    }
 }

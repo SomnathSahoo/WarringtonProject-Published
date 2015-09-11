@@ -48,4 +48,7 @@ public partial class RequestDashboard : System.Web.UI.Page
     {
         
     }
+
+    public void BindSearchGrid()
+    { }
 }

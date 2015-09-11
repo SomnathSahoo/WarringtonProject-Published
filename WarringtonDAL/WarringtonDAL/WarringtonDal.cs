@@ -116,7 +116,7 @@ namespace WarringtonDAL
                     try
                     {
                         tblUserRequest objUserRequest = new tblUserRequest();
-                        var sql = "SELECT COUNT(1) FROM dbo.tblUserRequest where RequestId="+requestData.RequestId;
+                        var sql = "SELECT COUNT(1) FROM dbo.tblUserRequest where RequestId=" + requestData.RequestId;
                         var count = context.Database.SqlQuery<int>(sql).Single();
                         if (count == 0)
                         {
@@ -227,7 +227,8 @@ namespace WarringtonDAL
             {
                 try
                 {
-                    count = context.tblUsers.Count(r => r.PrimaryPhoneNo == phoneNo);
+                    var users = context.tblUsers.Where(r => r.PrimaryPhoneNo == phoneNo).Select(p => p.UserID).ToList();
+                    count = users.Count;
                 }
                 catch (Exception ex)
                 {
@@ -282,7 +283,7 @@ namespace WarringtonDAL
                     else
                     {
                         long maxNo = Convert.ToInt64(maxRequestNo.Substring(4));
-                        requestNo = "WTP-" + (maxNo+1).ToString().PadLeft(6, '0');
+                        requestNo = "WTP-" + (maxNo + 1).ToString().PadLeft(6, '0');
 
                     }
                 }
@@ -292,6 +293,75 @@ namespace WarringtonDAL
                 }
             }
             return requestNo;
+        }
+
+        public bool CheckPhoneNoExit(string phoneNo)
+        {
+            var count = 0;
+            using (var context = new TheThinkerz_WTPSharePointEntities())
+            {
+                try
+                {
+                    var users = context.tblUsers.Where(r => r.PrimaryPhoneNo == phoneNo).Select(p => p.UserID).ToList();
+                    count = users.Count;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return count > 0;
+        }
+
+        public List<UserRequest> SearchRequest(SearchParam objParam)
+        {
+            List<UserRequest> lstRequests = new List<UserRequest>();
+            using (var context = new TheThinkerz_WTPSharePointEntities())
+            {
+                try
+                {
+                    var result = context.tblUserRequests.Where(r => string.IsNullOrEmpty(objParam.RequestNo) ? (objParam.RequestNo.Equals(string.Empty)) : (r.RequestNo.Equals(objParam.RequestNo))
+                        && (r.PrimaryPhoneNo.Equals(objParam.UserId))
+                        && (string.IsNullOrEmpty(objParam.RequestStatus) ? (objParam.RequestStatus.Equals(string.Empty)) : (r.Status.Equals(objParam.RequestStatus)))
+                        );
+                    switch (objParam.CompareOperator)
+                    {
+                        case "=":
+                            result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
+                                (objParam.RequestDate.Equals(DateTime.MinValue)) :
+                                (p.CreateDate.Equals(objParam.RequestDate))));
+                            break;
+                        case ">":
+                            result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
+                                (objParam.RequestDate.Equals(DateTime.MinValue)) : (p.CreateDate > objParam.RequestDate)));
+                            break;
+                        case "<":
+                            result = result.Where(p => (objParam.RequestDate == DateTime.MinValue ?
+                                (objParam.RequestDate.Equals(DateTime.MinValue)) : (p.CreateDate < objParam.RequestDate)));
+                            break;
+                    }
+                    foreach(tblUserRequest objRequest in result)
+                    {
+                        lstRequests.Add(new UserRequest()
+                        {
+                            RequestId = objRequest.RequestId,
+                            RequestNo = objRequest.RequestNo,
+                            CreateDate = objRequest.CreateDate,
+                            UpdateDate = objRequest.UpdateDate,
+                            Status = objRequest.Status,
+                            ProblemLocation = objRequest.ProblemLocation,
+                            ShortDescription = objRequest.ShortDescription,
+                            LongDescription = objRequest.LongDescription
+                        });
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return lstRequests;
         }
     }
 }

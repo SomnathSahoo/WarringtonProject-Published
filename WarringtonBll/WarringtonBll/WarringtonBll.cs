@@ -151,5 +151,29 @@ namespace WarringtonBll
             }
             return false;
         }
+
+        public bool CheckPhoneNoExit(string phoneNo)
+        {
+            objDal = new WarringtonDal();
+            return objDal.IsUserRegistered(phoneNo);
+        }
+
+        public List<UserRequest> SearchRequest(SearchParam objParam)
+        {
+            try
+            {
+                objDal = new WarringtonDal();
+                return objDal.SearchRequest(objParam);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objDal = null;
+            }
+            return null;
+        }
     }
 }
