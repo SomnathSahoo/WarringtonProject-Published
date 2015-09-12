@@ -16,6 +16,7 @@ namespace WarringtonEntity
         public const string _USERISLOGGEDIN = "UserIsLoggedIn";
         public const string _POSTEDFILES = "PostedFiles";
         public const string _LOGINUSERID = "UserId";
+        public const string _SEARCHREQUESTDATA = "SearchRequestData";
 
     }
 }

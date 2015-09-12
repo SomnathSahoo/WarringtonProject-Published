@@ -15,7 +15,14 @@ public partial class RequestDashboard : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            BindSearchGrid();
+            if (Utility.GetSessionValue<bool>(Constants._USERISLOGGEDIN))
+            {
+                BindSearchGrid();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 
@@ -23,27 +30,89 @@ public partial class RequestDashboard : System.Web.UI.Page
     {
         btnReset.Click += btnReset_Click;
         btnSearch.Click += btnSearch_Click;
-        btnSendRequest.Click += btnSendRequest_Click;
         grdRequests.PageIndexChanging += grdRequests_PageIndexChanging;
     }
 
-    void grdRequests_PageIndexChanging(object sender, GridViewPageEventArgs e)
+   protected void grdRequests_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        
+        grdRequests.PageIndex = e.NewPageIndex;
+        grdRequests.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+        DataTable dtSearchResult = Utility.GetSessionValue<DataTable>(Constants._SEARCHREQUESTDATA);
+        if (!dtSearchResult.DataTableIsEmpty())
+        {
+            grdRequests.DataSource = dtSearchResult;
+            grdRequests.DataBind();
+        }
+        else
+        {
+            grdRequests.Dispose();
+            grdRequests.DataBind();
+        }
     }
-    void btnSendRequest_Click(object sender, EventArgs e)
+   protected void btnSendRequest_Click(object sender, EventArgs e)
     {
+        objBll = new WarringtonBll.WarringtonBll();
+        List<DocRepository> lstDocs = new List<DocRepository>();
+        UserRequest lstUserRequest = new UserRequest()
+        {
+            RequestId=Convert.ToInt32(hdnReqId.Value),
+            CreateDate = DateTime.UtcNow,
+            ProblemLocation = txtAddress.Text,
+            ShortDescription = txtShortDesc.Text,
+            LongDescription = txtLongDesc.Text,
+            EmailConfirmation = chkConfirmEmail.Checked,
+            Status = "U",
+            UpdateDate=DateTime.UtcNow
+        };
+        RequestStatus lstRequestStatus = new RequestStatus()
+        {
+            Status = "U",
+            UpdateDate = DateTime.UtcNow
+        };
+        IList<HttpPostedFile> postedFiles = null;
+        if (fuploadDocs.HasFile)
+        {
+            postedFiles = fuploadDocs.PostedFiles;
 
+            foreach (HttpPostedFile postedFile in postedFiles)
+            {
+                if (!string.IsNullOrEmpty(postedFile.FileName))
+                {
+                    postedFile.SaveAs(Server.MapPath(@"~\DocRepository\") + postedFile.FileName);
+                    lstDocs.Add(new DocRepository()
+                    {
+                        FileName = postedFile.FileName,
+                        FilePath = Server.MapPath(@"~\DocRepository\"),
+                        UploadDate = DateTime.UtcNow
+                    });
+                }
+            }
+        }
+        bool isSaved = objBll.SaveUserRequest(lstUserRequest, lstRequestStatus, lstDocs);
+        if (isSaved)
+        {
+            ClearControl();
+            hdnFileList.Value = "";
+            BindSearchGrid();
+            pnlEdit.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('User Request successfully submited...')", true);
+        }
+        else
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('There are some error...')", true);
+        }
     }
 
-    void btnSearch_Click(object sender, EventArgs e)
+   protected void btnSearch_Click(object sender, EventArgs e)
     {
         BindSearchGrid();
     }
 
-    void btnReset_Click(object sender, EventArgs e)
+   protected void btnReset_Click(object sender, EventArgs e)
     {
-
+        ClearControl();
+        pnlEdit.Visible = false;
+        hdnFileList.Value = "";
     }
 
     public void BindSearchGrid()
@@ -83,9 +152,11 @@ public partial class RequestDashboard : System.Web.UI.Page
             drRequest["Request_LongDesc"] = objrequest.LongDescription;
             dtSearchResult.Rows.Add(drRequest);
         }
-        dtSearchResult.AcceptChanges();
+        dtSearchResult.AcceptChanges(); 
+        grdRequests.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
         if (!dtSearchResult.DataTableIsEmpty())
         {
+            Utility.SetSessionValue(Constants._SEARCHREQUESTDATA, dtSearchResult);
             grdRequests.DataSource = dtSearchResult;
             grdRequests.DataBind();
         }
@@ -98,7 +169,7 @@ public partial class RequestDashboard : System.Web.UI.Page
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
          objBll = new WarringtonBll.WarringtonBll();
-        editDiv.Visible = true;
+        pnlEdit.Visible = true;
 
         Button btnUpdate = (Button)sender;
         GridViewRow gvr = (GridViewRow)btnUpdate.NamingContainer;
@@ -112,5 +183,11 @@ public partial class RequestDashboard : System.Web.UI.Page
         txtAddress.Text = lblProbAddress.Text;
         txtShortDesc.Text = lblShortDesc.Text;
         txtLongDesc.Text = lblLongDesc.Text;
+    }
+
+    protected void ClearControl()
+    {
+        ContentPlaceHolder objContentPlaceHolder = (ContentPlaceHolder)Master.FindControl("ContentPlaceHolder1");
+        Utility.ClearControl(objContentPlaceHolder);
     }
 }

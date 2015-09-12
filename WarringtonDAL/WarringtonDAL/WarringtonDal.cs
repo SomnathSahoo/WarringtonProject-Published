@@ -65,31 +65,26 @@ namespace WarringtonDAL
                         tblUser objUser = new tblUser();
                         foreach (UserMaster objItem in userData)
                         {
-
-                            var count = context.tblUsers.Count(r => r.PrimaryPhoneNo == objItem.PrimaryPhoneNo);
-                            if (count == 0)
-                            {
-                                PropertyInfo[] userProperties = objUser.GetType().GetProperties().Where(p => p.GetMethod.IsVirtual == false).ToArray();
-                                foreach (PropertyInfo item in userProperties)
-                                {
-                                    PropertyInfo dataProperty = objItem.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                    item.SetValue(objUser, dataProperty.GetValue(objItem), null);
-                                }
-                                context.tblUsers.Add(objUser);
-                            }
-                            else
-                            {
-                                objUser = context.tblUsers.Where(r => r.PrimaryPhoneNo == objItem.PrimaryPhoneNo).Single<tblUser>();
-                                context.tblUsers.Where(r => r.PrimaryPhoneNo == objItem.PrimaryPhoneNo).ToList().ForEach(p =>
-                                {
-                                    PropertyInfo[] userProperties = p.GetType().GetProperties().Where(r => r.GetMethod.IsVirtual == false).ToArray();
-                                    foreach (PropertyInfo item in userProperties.Skip(1))
-                                    {
-                                        PropertyInfo dataProperty = objItem.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                        item.SetValue(p, dataProperty.GetValue(objItem), null);
-                                    }
-                                });
-                            }
+                            objUser.EmailId = objItem.EmailId;
+                            objUser.FirstName = objItem.FirstName;
+                            objUser.LastName = objItem.LastName;
+                            objUser.Address1 = objItem.Address1;
+                            objUser.Address2 = objItem.Address2;
+                            objUser.ZipCode = objItem.ZipCode;
+                            objUser.CityName = objItem.CityName;
+                            objUser.StateId = objItem.StateId;
+                            objUser.PrimaryPhoneNo = objItem.PrimaryPhoneNo;
+                            objUser.PrimaryPhoneType = objItem.PrimaryPhoneType;
+                            objUser.PrimaryMobileProvider = objItem.PrimaryMobileProvider;
+                            objUser.SecondaryPhoneNo = objItem.SecondaryPhoneNo;
+                            objUser.SecondaryPhoneType = objItem.SecondaryPhoneType;
+                            objUser.SecondaryMobileProvider = objItem.SecondaryMobileProvider;
+                            objUser.PrefferedContactMethod = objItem.PrefferedContactMethod;
+                            objUser.CreateDate = objItem.CreateDate;
+                            objUser.UpdateDate = objItem.UpdateDate;
+                            objUser.PinNo = objItem.PinNo;
+                            objUser.Active = objItem.Active;
+                            context.tblUsers.Add(objUser);
                         }
                         context.SaveChanges();
                         context.Entry(objUser).GetDatabaseValues();
@@ -122,26 +117,43 @@ namespace WarringtonDAL
                         if (count == 0)
                         {
                             requestData.RequestNo = GenerateRequestNo();
-                            PropertyInfo[] userProperties = objUserRequest.GetType().GetProperties().Where(p => p.GetMethod.IsVirtual == false).ToArray();
-                            foreach (PropertyInfo item in userProperties)
-                            {
-                                PropertyInfo dataProperty = requestData.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                item.SetValue(objUserRequest, dataProperty.GetValue(requestData), null);
-                            }
+
+                            objUserRequest.RequestNo = requestData.RequestNo;
+                            objUserRequest.FirstName = requestData.FirstName;
+                            objUserRequest.LastName = requestData.LastName;
+                            objUserRequest.Address1 = requestData.Address1;
+                            objUserRequest.Address2 = requestData.Address2;
+                            objUserRequest.ZipCode = requestData.ZipCode;
+                            objUserRequest.CityName = requestData.CityName;
+                            objUserRequest.StateId = requestData.StateId;
+                            objUserRequest.PrimaryPhoneNo = requestData.PrimaryPhoneNo;
+                            objUserRequest.PrimaryPhoneType = requestData.PrimaryPhoneType;
+                            objUserRequest.PrimaryMobileProvider = requestData.PrimaryMobileProvider;
+                            objUserRequest.SecondaryPhoneNo = requestData.SecondaryPhoneNo;
+                            objUserRequest.SecondaryPhoneType = requestData.SecondaryPhoneType;
+                            objUserRequest.SecondaryMobileProvider = requestData.SecondaryMobileProvider;
+                            objUserRequest.EmailId = requestData.EmailId;
+                            objUserRequest.PrefContactMethod = requestData.PrefContactMethod;
+                            objUserRequest.ProblemLocation = requestData.ProblemLocation;
+                            objUserRequest.ShortDescription = requestData.ShortDescription;
+                            objUserRequest.LongDescription = requestData.LongDescription;
+                            objUserRequest.AttachedDocName = requestData.AttachedDocName;
+                            objUserRequest.EmailConfirmation = requestData.EmailConfirmation;
+                            objUserRequest.CreateDate = requestData.CreateDate;
+                            objUserRequest.UpdateDate = requestData.UpdateDate;
+                            objUserRequest.Status = requestData.Status;
                             context.tblUserRequests.Add(objUserRequest);
                         }
                         else
                         {
                             objUserRequest = context.tblUserRequests.Where(r => r.RequestId == requestData.RequestId).Single<tblUserRequest>(); ;
-                            context.tblUserRequests.Where(r => r.RequestId == requestData.RequestId).ToList().ForEach(p =>
-                            {
-                                PropertyInfo[] userProperties = p.GetType().GetProperties().Where(r => r.GetMethod.IsVirtual == false).ToArray();
-                                foreach (PropertyInfo item in userProperties.Skip(1))
-                                {
-                                    PropertyInfo dataProperty = requestData.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                    item.SetValue(p, dataProperty.GetValue(requestData), null);
-                                }
-                            });
+                            objUserRequest.ProblemLocation = requestData.ProblemLocation;
+                            objUserRequest.ShortDescription = requestData.ShortDescription;
+                            objUserRequest.LongDescription = requestData.LongDescription;
+                            objUserRequest.EmailConfirmation = requestData.EmailConfirmation;
+                            objUserRequest.Status = requestData.Status;
+                            objUserRequest.UpdateDate = requestData.UpdateDate;
+
                         }
 
                         context.SaveChanges();
@@ -156,12 +168,11 @@ namespace WarringtonDAL
                             var countDoc = context.Database.SqlQuery<int>(sqlDoc).Single();
                             if (countDoc == 0)
                             {
-                                PropertyInfo[] userProperties = objDocRepository.GetType().GetProperties().Where(p => p.GetMethod.IsVirtual == false).ToArray();
-                                foreach (PropertyInfo item in userProperties.Skip(1))
-                                {
-                                    PropertyInfo dataProperty = objItem.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                    item.SetValue(objDocRepository, dataProperty.GetValue(objItem), null);
-                                }
+                                objDocRepository.RequestId = objItem.RequestId;
+                                objDocRepository.FileName = objItem.FileName;
+                                objDocRepository.FilePath = objItem.FilePath;
+                                objDocRepository.UploadDate = objItem.UploadDate;
+
                                 context.tblDocRepositories.Add(objDocRepository);
                                 context.SaveChanges();
                             }
@@ -176,12 +187,11 @@ namespace WarringtonDAL
                         var countStatus = context.Database.SqlQuery<int>(sqlStatus).Single();
                         if (countStatus == 0)
                         {
-                            PropertyInfo[] userProperties = objRequestStatus.GetType().GetProperties().Where(p => p.GetMethod.IsVirtual == false).ToArray();
-                            foreach (PropertyInfo item in userProperties.Skip(1))
-                            {
-                                PropertyInfo dataProperty = statusData.GetType().GetProperty(item.Name, BindingFlags.Public | BindingFlags.Instance);
-                                item.SetValue(objRequestStatus, dataProperty.GetValue(statusData), null);
-                            }
+                            objRequestStatus.RequestId = statusData.RequestId;
+                            objRequestStatus.Status = statusData.Status;
+                            objRequestStatus.UpdateDate = statusData.UpdateDate;
+                            objRequestStatus.UpdateBy = statusData.UpdateBy;
+
                             context.tblRequestStatus.Add(objRequestStatus);
                         }
                         context.SaveChanges();
@@ -342,7 +352,9 @@ namespace WarringtonDAL
                                 (DateTime.Compare(p.CreateDate.Value.Date, objParam.RequestDate.Date) < 0))).ToList<tblUserRequest>();
                             break;
                     }
-                    result = result.Take(objParam.NoOfData).ToList<tblUserRequest>();
+                    //result = result.Take(objParam.NoOfData).ToList<tblUserRequest>();
+                    result = result.ToList<tblUserRequest>();
+
                     foreach (tblUserRequest objRequest in result)
                     {
                         lstRequests.Add(new UserRequest()
@@ -374,7 +386,7 @@ namespace WarringtonDAL
             {
                 try
                 {
-                    var lstDocs = context.tblDocRepositories.Where(r => r.RequestId==requestId).ToList<tblDocRepository>();
+                    var lstDocs = context.tblDocRepositories.Where(r => r.RequestId == requestId).ToList<tblDocRepository>();
                     foreach (var item in lstDocs)
                     {
                         strFileList += string.IsNullOrEmpty(strFileList) ? item.FileName : "," + item.FileName;

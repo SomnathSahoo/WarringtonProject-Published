@@ -87,10 +87,10 @@ namespace WarringtonHelper
             return ip.Replace("::ffff:", "");
         }
 
-        public static void ClearControl(ContentPlaceHolder contentHolder)
+        public static void ClearControl(Control contentHolder)
         {
             var allControls = contentHolder.Controls.Cast<Control>().
-                Where(c => c.GetType() == typeof(TextBox) || c.GetType() == typeof(DropDownList) || c.GetType() == typeof(CheckBox));
+                Where(c => c.GetType() == typeof(TextBox) || c.GetType() == typeof(DropDownList) || c.GetType() == typeof(CheckBox) || c.GetType() == typeof(Panel));
             foreach (Control ctrl in allControls)
             {
                 if (ctrl is TextBox)
@@ -107,6 +107,10 @@ namespace WarringtonHelper
                 {
                     CheckBox chkControl = ctrl as CheckBox;
                     chkControl.Checked=false;
+                }
+                else if (ctrl is Panel)
+                {
+                    ClearControl(ctrl);
                 }
             }
         }

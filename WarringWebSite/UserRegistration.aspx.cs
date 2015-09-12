@@ -40,49 +40,50 @@ public partial class UserRegistration : System.Web.UI.Page
 
     protected void btnRegister_Click(object sender, EventArgs e)
     {
-
+        objBll = new WarringtonBll.WarringtonBll();
         if (chkAgreePolicy.Checked)
         {
-            List<UserMaster> lstUser = new List<UserMaster>();
-            lstUser.Add(new UserMaster()
+            if (!objBll.CheckPhoneNoExit(txtPrimaryPhoneNumber.Text))
             {
-                EmailId = txtEmailId.Text,
-                FirstName = txtFirstName.Text,
-                LastName = txtLastName.Text,
-                Address1 = txtAddress1.Text,
-                Address2 = txtAddress2.Text,
-                ZipCode = Convert.ToInt32(txtZipCode.Text),
-                CityName = txtCity.Text,
-                StateId = Convert.ToInt32(ddlState.SelectedValue),
-                PrimaryPhoneNo = txtPrimaryPhoneNumber.Text,
-                PrimaryPhoneType = ddlPrimaryPhoneType.SelectedValue,
-                PrimaryMobileProvider = ddlMobileProvider.SelectedValue,
-                SecondaryPhoneNo = txtSecondaryPhoneNumber.Text,
-                SecondaryPhoneType = ddlSecondaryPhoneType.SelectedValue,
-                SecondaryMobileProvider = ddlSecondaryMobileProvider.SelectedValue,
-                PrefferedContactMethod = ddlPrefContactMethod.SelectedValue,
-                CreateDate = DateTime.UtcNow,
-                PinNo = txtPin.Text,
-                Active = true
-            });
+                List<UserMaster> lstUser = new List<UserMaster>();
+                lstUser.Add(new UserMaster()
+                {
+                    EmailId = txtEmailId.Text,
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    Address1 = txtAddress1.Text,
+                    Address2 = txtAddress2.Text,
+                    ZipCode = Convert.ToInt32(txtZipCode.Text),
+                    CityName = txtCity.Text,
+                    StateId = Convert.ToInt32(ddlState.SelectedValue),
+                    PrimaryPhoneNo = txtPrimaryPhoneNumber.Text,
+                    PrimaryPhoneType = ddlPrimaryPhoneType.SelectedValue,
+                    PrimaryMobileProvider = ddlMobileProvider.SelectedValue,
+                    SecondaryPhoneNo = txtSecondaryPhoneNumber.Text,
+                    SecondaryPhoneType = ddlSecondaryPhoneType.SelectedValue,
+                    SecondaryMobileProvider = ddlSecondaryMobileProvider.SelectedValue,
+                    PrefferedContactMethod = ddlPrefContactMethod.SelectedValue,
+                    CreateDate = DateTime.UtcNow,
+                    PinNo = txtPin.Text,
+                    Active = true
+                });
 
-            objBll = new WarringtonBll.WarringtonBll();
-            bool isSaved = objBll.SaveUserMaster(lstUser);
-            if (isSaved)
-            {
-                ClearControl();
-                //UserRequest lstUserRequest = Utility.GetSessionValue<UserRequest>(Constants._REQUESTDATA);
-                //RequestStatus lstRequestStatus = Utility.GetSessionValue<RequestStatus>(Constants._REQUESTSTATUSDATA);
-                //FileUpload lstDocs = Utility.GetSessionValue<FileUpload>(Constants._REQUESTDOCS);
-                //Utility.SetSessionValue(Constants._REQUESTDATA, lstUserRequest);
-                //Utility.SetSessionValue(Constants._REQUESTSTATUSDATA, lstRequestStatus);
-                //Utility.SetSessionValue(Constants._REQUESTDOCS, lstDocs);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('User Registration successfully done...')", true);
-                Response.Redirect("Login.aspx?P="+(int)PageEnum.RequestSubmissionPage);
+
+                bool isSaved = objBll.SaveUserMaster(lstUser);
+                if (isSaved)
+                {
+                    ClearControl();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('User Registration successfully done...')", true);
+                    Response.Redirect("Login.aspx?P=" + (int)PageEnum.RequestSubmissionPage);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('There are some error...')", true);
+                }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('There are some error...')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Primary Phone no must be unique. Duplicate Phone no found.')", true);
             }
         }
         else

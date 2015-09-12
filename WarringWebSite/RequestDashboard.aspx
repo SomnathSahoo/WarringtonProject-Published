@@ -37,14 +37,13 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:HiddenField ID="hdnFileList" runat="server" Value="0" />
     <section>
 	        <div class="hdrBar bgClr" >
     	        <i class="fa fa-search"></i> View Previous Requests
             </div>
             <div class="whbody">
     	        <div class="whtbdy2">
-        	
-                    <form>
                             <ul class="forbrdrIt">
 
 	                            <li>
@@ -80,10 +79,9 @@
                                </li>
     
                             </ul>
-                    </form>
                         <div class="tblShowBx">
                                 <div class="pgerBar">
-                                    <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="inFldITT inptE" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="inFldITT inptE">
                                         <asp:ListItem Value="5" Text="5"></asp:ListItem>
                                         <asp:ListItem Value="10" Text="10"></asp:ListItem>
                                         <asp:ListItem Value="20" Text="20"></asp:ListItem>
@@ -142,20 +140,17 @@
                 </div>
             </div>
     </section>
-    <div id="editDiv" runat="server" visible="false">
+    <asp:Panel ID="pnlEdit" runat="server" Visible="false">
         <section>
 	        <div class="hdrBar bgClr" >
     	        <i class="fa fa-pencil"></i> Create a New Request
             </div>
             <div class="whbody">
     	        <div class="whtbdy3">
-     
-                    <form>
                             <ul class="forbrdrIt">
 
 	                            <li>
                                     <asp:HiddenField ID="hdnReqId" runat="server" Value="0" />
-                                    <asp:HiddenField ID="hdnFileList" runat="server" Value="0" />
                                     <label class="flbl">Address/Location of the Problem :</label>
                                     <asp:TextBox ID="txtAddress" runat="server" CssClass="inFldITT inptF" TextMode="MultiLine"></asp:TextBox>
                                     <div class="magic"></div>
@@ -188,24 +183,22 @@
     
                                 <li>
     	                            <div class="chkArea">
-        	                            <label class="flbl"><input type="checkbox" /> Check the box to receive conformation by email.</label>
+        	                            <label class="flbl"><asp:CheckBox ID="chkConfirmEmail" runat="server" Text="Check the box to receive conformation by email." /></label>
                                     </div>
                                     <div class="magic"></div>
                                 </li>    
     
                                <li>
                                     <div class="btnBoxA">
-   		                            <asp:Button ID="btnSendRequest" runat="server" Text="Send Request" CssClass="inptBtn bbtnA bgClr" />
+   		                            <asp:Button ID="btnSendRequest" runat="server" Text="Send Request" OnClick="btnSendRequest_Click" CssClass="inptBtn bbtnA bgClr" />
                                     <div class="magic"></div>
                                </div>
                                </li>
     
                             </ul>
-                    </form>        
-        
                 </div>
 	        </div>
     </section>
-    </div>
+    </asp:Panel>
 </asp:Content>
 
